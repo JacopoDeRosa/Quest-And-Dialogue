@@ -19,12 +19,11 @@ MonoBehaviour:
     - 14ab29d9-2527-4a11-a057-a7b91fc60ad9
     - f8fc0ac6-d132-4cc5-8f9e-cccad2dda86d
     - 5ce3b521-6e5d-4982-aa62-4d8ec3403151
-    - 2a5ef764-fcb0-479c-bd00-4a645b0e384b
     - d44091e4-a71b-4a75-bad6-93a99e43a1d5
     _nodeRect:
       serializedVersion: 2
-      x: 171
-      y: 410
+      x: 84
+      y: 330
       width: 200
       height: 100
   - _uniqueID: f8fc0ac6-d132-4cc5-8f9e-cccad2dda86d
