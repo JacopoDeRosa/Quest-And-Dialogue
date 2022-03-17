@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24af83a70e01ec84d8dad0a9f0088acd, type: 3}
+  m_Name: Dialogue 1
+  m_EditorClassIdentifier: 
+  _dialogueNodes:
+  - _uniqueID: a2d14814-8fb9-4fab-a458-ad3879cff05f
+    _content: Devono Dire
+    _children:
+    - 2f59928d-ea38-416e-965b-150397e2b06b
+    - 94d63db5-e3d5-483b-8e85-b649f00a89ce
+    _nodeRect:
+      serializedVersion: 2
+      x: 184
+      y: 305
+      width: 200
+      height: 100
+  - _uniqueID: 2f59928d-ea38-416e-965b-150397e2b06b
+    _content: 
+    _children: []
+    _nodeRect:
+      serializedVersion: 2
+      x: 494
+      y: 143
+      width: 200
+      height: 100
+  - _uniqueID: 94d63db5-e3d5-483b-8e85-b649f00a89ce
+    _content: 
+    _children: []
+    _nodeRect:
+      serializedVersion: 2
+      x: 497
+      y: 449
+      width: 200
+      height: 100
