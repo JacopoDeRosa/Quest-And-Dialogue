@@ -10,6 +10,7 @@ public class DialogueNode: IEquatable<DialogueNode>
     [SerializeField][TextArea] private string _content;
     [SerializeField] private List<string> _children;
     [SerializeField] private Rect _nodeRect = new Rect(10, 50, 200, 100);
+    [SerializeField] private Vector2 _nodeScroll = new Vector2(0, 0);
 
 
     public DialogueNode()
@@ -17,6 +18,7 @@ public class DialogueNode: IEquatable<DialogueNode>
         _uniqueID = "";
         _content = "";
         _children = new List<string>();
+        _nodeScroll = new Vector2(0, 0);
     }
     public DialogueNode(string id, string content)
     {
@@ -28,6 +30,7 @@ public class DialogueNode: IEquatable<DialogueNode>
     public string Content { get => _content; }
     public List<string> Children { get => _children; }
     public Rect NodeRect { get => _nodeRect; }
+    public Vector2 ScrollPosition { get => _nodeScroll; }
 
     public bool Equals(DialogueNode other)
     {
@@ -47,6 +50,10 @@ public class DialogueNode: IEquatable<DialogueNode>
         position = new Vector2(Mathf.Clamp(position.x, 0, 5000), Mathf.Clamp(position.y, 20, 5000));
         _nodeRect.position = position;
     }
+    public void SetScrollPosition(Vector2 scroll)
+    {
+        _nodeScroll = scroll;
+    }
     public void RemoveChild(DialogueNode node)
     {
         RemoveChild(node.UniqueID);
@@ -64,7 +71,6 @@ public class DialogueNode: IEquatable<DialogueNode>
         if (_children.Contains(id)) return;
         _children.Add(id);
     }
-
     public bool HadChild(DialogueNode node)
     {
         return HasChild(node.UniqueID);

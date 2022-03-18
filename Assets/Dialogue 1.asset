@@ -24,15 +24,17 @@ MonoBehaviour:
       y: 305
       width: 200
       height: 100
+    _nodeScroll: {x: 0, y: 0}
   - _uniqueID: 2f59928d-ea38-416e-965b-150397e2b06b
     _content: 
     _children: []
     _nodeRect:
       serializedVersion: 2
       x: 494
-      y: 143
+      y: 167
       width: 200
       height: 100
+    _nodeScroll: {x: 0, y: 0}
   - _uniqueID: 94d63db5-e3d5-483b-8e85-b649f00a89ce
     _content: 
     _children: []
@@ -42,3 +44,4 @@ MonoBehaviour:
       y: 449
       width: 200
       height: 100
+    _nodeScroll: {x: 0, y: 0}

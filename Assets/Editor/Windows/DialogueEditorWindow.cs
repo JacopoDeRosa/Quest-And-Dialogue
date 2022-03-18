@@ -42,7 +42,7 @@ public class DialogueEditorWindow : EditorWindow
     private Vector2 _menuPosition;
 
     private Vector2 _scrollPosition = Vector2.zero;
-    
+
 
 
     private Vector2 AdjustedMousePosition { get => Event.current.mousePosition + _scrollPosition - new Vector2(sidebarWidth, 0); }
@@ -116,7 +116,7 @@ public class DialogueEditorWindow : EditorWindow
 
             EditorGUILayout.Space(25);
 
-            if(GUILayout.Button("Add New Node"))
+            if (GUILayout.Button("Add New Node"))
             {
                 _activeDialogue.CreateNewNode();
             }
@@ -131,7 +131,7 @@ public class DialogueEditorWindow : EditorWindow
 
             // Draw Grid Background
             DrawGridBackground(canvas);
-           
+
             // Draw utility curve for node parenting and unparenting
             if (_parentingNode != null)
             {
@@ -164,7 +164,7 @@ public class DialogueEditorWindow : EditorWindow
             EditorGUILayout.EndScrollView();
             EditorGUILayout.EndHorizontal();
 
-            if(_menuOpen)
+            if (_menuOpen)
             {
                 DrawMouseMenu();
             }
@@ -184,16 +184,16 @@ public class DialogueEditorWindow : EditorWindow
                 _nodeToDelete = null;
             }
 
-            
+
         }
     }
 
     private void DrawGridBackground(Rect canvas)
     {
         Texture2D backgroundTexture = EditorGUIUtility.Load("nodes_background.png") as Texture2D;
-        
+
         Rect gridRect = new Rect(0, 0, 100, 100);
-        
+
         GUI.DrawTextureWithTexCoords(canvas, backgroundTexture, gridRect);
 
 
@@ -210,13 +210,13 @@ public class DialogueEditorWindow : EditorWindow
         ProcessNodeParenting();
         ProcessNodeUnparenting();
         ProcessNodeDrag();
-        ProcessMouseMenu();    
+        ProcessMouseMenu();
     }
     private void ProcessScrollMove()
     {
         if (Event.current.button != 2) return;
 
-        if(Event.current.type == EventType.MouseDrag)
+        if (Event.current.type == EventType.MouseDrag)
         {
             _scrollPosition -= Event.current.delta;
             GUI.changed = true;
@@ -266,7 +266,7 @@ public class DialogueEditorWindow : EditorWindow
             foreach (var node in _activeDialogue.Nodes)
             {
                 if (node.Equals(_parentingNode)) continue;
-               
+
                 Rect inputRect = GetNodeInputRect(node);
                 if (inputRect.Contains(AdjustedMousePosition))
                 {
@@ -380,13 +380,14 @@ public class DialogueEditorWindow : EditorWindow
         nodeLableStyle.alignment = TextAnchor.MiddleCenter;
         nodeLableStyle.padding = new RectOffset(0, 0, 0, 0);
         nodeLableStyle.fontStyle = FontStyle.Bold;
-       
+
         EditorGUILayout.LabelField("Dialogue Node", nodeLableStyle);
         GUILayout.EndArea();
         // End of header
 
         // Draw the main body of the node
         GUILayout.BeginArea(node.NodeRect, _nodeStyle);
+        node.SetScrollPosition(EditorGUILayout.BeginScrollView(node.ScrollPosition));
 
         EditorGUI.BeginChangeCheck();
 
@@ -409,6 +410,7 @@ public class DialogueEditorWindow : EditorWindow
             _nodeToDelete = node;
         }
         EditorGUILayout.EndHorizontal();
+        EditorGUILayout.EndScrollView();
         GUILayout.EndArea();
         // End of main body
 
@@ -437,12 +439,12 @@ public class DialogueEditorWindow : EditorWindow
         return new Rect(nodeRect.center.x + (nodeRect.width / 2) - (connectorsSize / 1.5f), nodeRect.center.y - (connectorsSize / 2), connectorsSize, connectorsSize);
     }
     private void DrawConnectorsGUI(DialogueNode node)
-    {  
+    {
         Vector3 startPos = GetNodeOutputPosition(node);
 
         foreach (var child in _activeDialogue.GetNodeChildren(node))
         {
-            if(_unparentingNode != null)
+            if (_unparentingNode != null)
             {
                 if (child.Equals(_unparentingNode)) continue;
             }
@@ -471,7 +473,7 @@ public class DialogueEditorWindow : EditorWindow
 
     private void OnEnable()
     {
-        GenerateStyles();   
+        GenerateStyles();
     }
     private void GenerateStyles()
     {
